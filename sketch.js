@@ -1,38 +1,51 @@
 const container = document.querySelector(".container");
 
-// const btn = document.createElement("button");
-// btn.addEventListener("click", function{
+const input = document.createElement("input");
+input.classList.add('input');
+input.type = 'number';
+input.placeholder = 'Type here...';
 
-// })
-function createBoxes(){
-//     const btn = document.createElement("button");
-//     btn.textContent = "Click me";
-//     btn.addEventListener("click", function(){
-//     console.log("hello");
-// })
-// container.appendChild(btn);
+const submitButton = document.createElement("button");
+submitButton.textContent = 'Submit';
+let side;
+container.appendChild(input);
+container.appendChild(submitButton);
 
-    for(let i = 1; i<257; i++){
-    const box = document.createElement("div");
-    box.classList.add('divBoxSingle');
-    container.appendChild(box);
-    box.addEventListener("mouseover", function() {
-        box.style.backgroundColor = "yellow";
+input.addEventListener('keydown', (event)=>{
+    if(event.key === 'Enter'){
+        side = input.value;
+        console.log(side);
+        createBoxess(side);
+    }
+})
+submitButton.addEventListener('click', ()=>{
+        side = input.value;
+        console.log(side);
+        createBoxess(side);
     });
+    
+function createBoxess(side){
 
-    // box.addEventListener("mouseout", function() {
-    //     box.style.backgroundColor = ""; // Resets to default background color
-    // });
-}}
+    const existingWraps = document.querySelectorAll('.Wrap');
+    existingWraps.forEach(wrap => wrap.remove());
 
-container.style.width = "100%"; // Adjust width according to your preference
-container.style.height = "750px"; // Adjust height according to your preference
+    for(let i = 0; i<side; i++){
+        const boxwrap = document.createElement("div");
+        boxwrap.classList.add('Wrap');
+        for(let j = 0; j<side; j++){
+            const box = document.createElement("div");
+            box.classList.add('divBoxSingle');
+            boxwrap.appendChild(box);
+            box.addEventListener("mouseover", function() {
+                box.style.backgroundColor = "red";
+            }); 
+        }
+        container.appendChild(boxwrap);
+}
+}
 
-const boxSize = 400 / 16; // Total container width divided by number of squares
-const boxes = document.querySelectorAll('.divBoxSingle');
-boxes.forEach(box => {
-    box.style.width = boxSize + "px";
-    box.style.height = boxSize + "px";
-});
+createBoxess(16);
 
-createBoxes();
+
+
+
