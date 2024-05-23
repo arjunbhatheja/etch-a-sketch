@@ -1,3 +1,6 @@
+body{
+    background-color: black;
+}
 .container{
     display: flex;
     flex-wrap: wrap;
@@ -18,16 +21,22 @@
     transition: all 5ms;
  } 
  input{
+    margin-top: .5px;
     padding-right: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     margin-left: 45%;
     border-width: 3px;
     border-radius: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
  }
 button{
-    margin-bottom: 10px;
+    margin-top: .5px;
+    margin-bottom: 8px;
+    border-width: 3px;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 button:hover {
     background-color: yellow;

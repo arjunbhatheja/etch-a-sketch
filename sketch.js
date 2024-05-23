@@ -28,8 +28,7 @@ function createBoxess(side){
 
     const existingWraps = document.querySelectorAll('.Wrap');
     existingWraps.forEach(wrap => wrap.remove());
-
-
+    let isMouseDown = false;
 
     for(let i = 0; i<side; i++){
         const boxwrap = document.createElement("div");
@@ -42,7 +41,7 @@ function createBoxess(side){
             box.style.border = `${48.0/side}px solid black`;
             box.style.margin= `${16.0/side}px`;
             boxwrap.appendChild(box);
-            box.addEventListener("mouseover", function() {
+            box.addEventListener("mousedown", function() {
                 let brightness = 100;
                 const currentBgColor = window.getComputedStyle(box).backgroundColor;
                 if(currentBgColor !== "rgb(127, 255, 212)"){
@@ -51,14 +50,30 @@ function createBoxess(side){
                     box.style.filter = `brightness(${brightness}%)`;
                 }
                 else{
-                    const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
-                    const r = randomBetween(0, 255);
-                    const g = randomBetween(0, 255);
-                    const b = randomBetween(0, 255);
-                    const rgb = `rgb(${r},${g},${b})`; 
-                    box.style.backgroundColor = rgb;
+                    const rC = ['red', 'orange', 'yellow', 'green', 'lime', 'blue', 'indigo', 'violet'];
+                    box.style.backgroundColor = rC[Math.floor(Math.random() * rC.length)];;
                 }
+                isMouseDown = true;
             }); 
+            box.addEventListener("mouseover", function() {
+                 if(isMouseDown){
+                    let brightness = 100;
+                    const currentBgColor = window.getComputedStyle(box).backgroundColor;
+                    if(currentBgColor !== "rgb(127, 255, 212)"){
+                        brightness -= 10; // Decrease brightness by 10% each time
+                        if (brightness < 0) brightness = 0; // Ensure brightness does not go below 0%
+                        box.style.filter = `brightness(${brightness}%)`;
+                    }
+                    else{
+                        const rC = ['red', 'orange', 'yellow', 'green', 'lime', 'blue', 'indigo', 'violet'];
+                        box.style.backgroundColor = rC[Math.floor(Math.random() * rC.length)];;
+                    }
+                    isMouseDown = true;
+                 }
+            });
+            box.addEventListener("mouseup", function() {
+                isMouseDown = false;
+            });
         }
         container.appendChild(boxwrap);
 }
