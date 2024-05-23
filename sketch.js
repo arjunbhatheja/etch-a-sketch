@@ -37,7 +37,7 @@ function createBoxess(side){
             const box = document.createElement("div");
             box.classList.add('divBoxSingle');
             box.style.width = `${100.0/side}vw`;
-            box.style.height = `${82.0/side}vh`;
+            box.style.height = `${79.0/side}vh`;
             box.style.border = `${48.0/side}px solid black`;
             box.style.margin= `${16.0/side}px`;
             boxwrap.appendChild(box);
