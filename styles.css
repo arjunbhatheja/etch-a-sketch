@@ -10,11 +10,11 @@
 }
 .divBoxSingle{ 
     display: flex;
-    width: 119px;
-    height: 55px;
-background-color: aquamarine;
-     border: 5px solid black; 
-    margin: 1px; 
+    /* width: 119px;
+    height: 44px; */
+    background-color: aquamarine;
+    /* border: 3px solid black;  */
+    /* margin: 1px;  */
     transition: all 5ms;
  } 
  input{
